@@ -247,6 +247,5 @@ void myHandler(const char *event, const char *data)
 {
     if (data) {
         state = (char*) data;
-        Particle.publish("testingData",String(state));
     }
 }
