@@ -19,7 +19,8 @@ Adafruit_NeoPixel circleOne(PIXEL_COUNT, CIRCLE_ONE_PIN, PIXEL_TYPE);
 Adafruit_NeoPixel circleTwo(PIXEL_COUNT, CIRCLE_TWO_PIN, PIXEL_TYPE);
 Adafruit_NeoPixel circleThree(PIXEL_COUNT, CIRCLE_THREE_PIN, PIXEL_TYPE);
 
-int state = 0;
+char* state = "reset";
+char myNum = 'a';
 
 void setup() {
     //Serial.begin(115200);
@@ -40,6 +41,33 @@ void setup() {
 void loop() {
     // Trigger pin, Echo pin, delay (ms), visual=true|info=false
     ping(D2, D3, 20, true);
+    
+    if (strcmp(state, "reset") == 0){
+        colorAllCircleOne(circleOne.Color(0, 0, 0), 5000);
+        colorAllCircleTwo(circleTwo.Color(0, 0, 0), 5000);
+        colorAllCircleThree(circleThree.Color(0, 0, 0), 5000); 
+        
+    } else if (strcmp(state, "state1") == 0 && (myNum == 'a')){
+        colorAllCircleOne(circleOne.Color(10, 0, 0), 5000);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 5000);
+        colorAllCircleThree(circleThree.Color(10, 0, 0), 5000); 
+        
+    } else if (strcmp(state, "state2") == 0 && (myNum == 'a' || myNum == 'b')){
+        colorAllCircleOne(circleOne.Color(0, 10, 0), 5000);
+        colorAllCircleTwo(circleTwo.Color(0, 10, 0), 5000);
+        colorAllCircleThree(circleThree.Color(0, 10, 0), 5000); 
+        
+    } else if (strcmp(state, "state3") == 0 && (myNum == 'a' || myNum == 'b' || myNum == 'c')){
+        colorAllCircleOne(circleOne.Color(10, 0, 10), 5000);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 10), 5000);
+        colorAllCircleThree(circleThree.Color(10, 0, 10), 5000); 
+        
+    } else if (strcmp(state, "state4") == 0 && (myNum == 'a' || myNum == 'b' || myNum == 'c' || myNum == 'd')){
+        colorAllCircleOne(circleOne.Color(10, 0, 0), 5000);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 5000);
+        colorAllCircleThree(circleThree.Color(10, 0, 0), 5000); 
+        
+    }
 }
 
 
@@ -66,13 +94,70 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
     
     if (inches < 24){
         
-        if (state == 0) {
-            colorAllCircleOne(circleOne.Color(0, 0, 150), 5000); // Green
-            colorAllCircleTwo(circleTwo.Color(0, 150, 0), 5000); // Red
-            colorAllCircleThree(circleThree.Color(150, 0, 0), 5000); // Red
-            Particle.publish("transmitter_ECE364_Megaton", "state1");
-            state = 1;
-        } else {
+        if (strcmp(state, "reset") == 0) {
+            if (myNum == 'a'){
+                state = "state1";
+                Particle.publish("transmitter_ECE364_Megaton", "state1");
+            } else {
+                state = "reset"
+                Particle.publish("transmitter_ECE364_Megaton", "reset");
+            }
+        } 
+        else if (strcmp(state, "state1") == 0){
+            if (myNum == 'a'){
+                state = "state1";
+                Particle.publish("transmitter_ECE364_Megaton", "state1");
+            } else if (myNum == 'b') {
+                state = "state2";
+                Particle.publish("transmitter_ECE364_Megaton", "state2");
+            } else {
+                state = "reset"
+                Particle.publish("transmitter_ECE364_Megaton", "reset");
+            }
+            
+        } 
+        else if (strcmp(state, "state2") == 0){
+            if (myNum == 'b'){
+                state = "state2";
+                Particle.publish("transmitter_ECE364_Megaton", "state2");
+            } else if (myNum == 'c') {
+                state = "state3";
+                Particle.publish("transmitter_ECE364_Megaton", "state3");
+            } else {
+                state = "reset"
+                Particle.publish("transmitter_ECE364_Megaton", "reset");
+            }
+            
+        }
+        else if (strcmp(state, "state3") == 0){
+            if (myNum == 'c'){
+                state = "state3";
+                Particle.publish("transmitter_ECE364_Megaton", "state3");
+            } else if (myNum == 'd') {
+                state = "state4";
+                Particle.publish("transmitter_ECE364_Megaton", "state4");
+            } else {
+                state = "reset"
+                Particle.publish("transmitter_ECE364_Megaton", "reset");
+            }
+            
+        }
+        else if (strcmp(state, "state4") == 0){
+            if (myNum == 'd'){
+                state = "state4";
+                Particle.publish("transmitter_ECE364_Megaton", "state4");
+            } else {
+                state = "reset"
+                Particle.publish("transmitter_ECE364_Megaton", "reset");
+            }
+        }
+        
+        
+        
+        
+        
+        
+        else {
             Particle.publish("transmitter_ECE364_Megaton", "reset");
             state = 0;
         }
@@ -171,12 +256,6 @@ uint32_t Wheel(byte WheelPos) {
 void myHandler(const char *event, const char *data)
 {
     if (data) {
-        if (strcmp(data,"reset")==0) {
-        colorAllCircleOne(circleOne.Color(0, 0, 0), 5000);
-        colorAllCircleTwo(circleTwo.Color(0, 0, 0), 5000);
-        colorAllCircleThree(circleThree.Color(0, 0, 0), 5000); 
-        } else {
-            state++;
-        }
+        state == data;
     }
 }
