@@ -43,29 +43,29 @@ void loop() {
     ping(D2, D3, 1000, true);
     
     if (strcmp(state, "reset") == 0){
-        colorAllCircleOne(circleOne.Color(0, 0, 0), 5000);
-        colorAllCircleTwo(circleTwo.Color(0, 0, 0), 5000);
-        colorAllCircleThree(circleThree.Color(0, 0, 0), 5000); 
+        colorAllCircleOne(circleOne.Color(0, 0, 0), 1000);
+        colorAllCircleTwo(circleTwo.Color(0, 0, 0), 1000);
+        colorAllCircleThree(circleThree.Color(0, 0, 0), 1000); 
         
     } else if (strcmp(state, "state1") == 0 && (myNum == 'a')){
-        colorAllCircleOne(circleOne.Color(10, 0, 0), 5000);
-        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 5000);
-        colorAllCircleThree(circleThree.Color(10, 0, 0), 5000); 
+        colorAllCircleOne(circleOne.Color(10, 0, 0), 1000);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 1000);
+        colorAllCircleThree(circleThree.Color(10, 0, 0), 1000); 
         
     } else if (strcmp(state, "state2") == 0 && (myNum == 'a' || myNum == 'b')){
-        colorAllCircleOne(circleOne.Color(0, 10, 0), 5000);
-        colorAllCircleTwo(circleTwo.Color(0, 10, 0), 5000);
-        colorAllCircleThree(circleThree.Color(0, 10, 0), 5000); 
+        colorAllCircleOne(circleOne.Color(0, 10, 0), 1000);
+        colorAllCircleTwo(circleTwo.Color(0, 10, 0), 1000);
+        colorAllCircleThree(circleThree.Color(0, 10, 0), 1000); 
         
     } else if (strcmp(state, "state3") == 0 && (myNum == 'a' || myNum == 'b' || myNum == 'c')){
-        colorAllCircleOne(circleOne.Color(10, 0, 10), 5000);
-        colorAllCircleTwo(circleTwo.Color(10, 0, 10), 5000);
-        colorAllCircleThree(circleThree.Color(10, 0, 10), 5000); 
+        colorAllCircleOne(circleOne.Color(10, 0, 10), 1000);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 10), 1000);
+        colorAllCircleThree(circleThree.Color(10, 0, 10), 1000); 
         
     } else if (strcmp(state, "state4") == 0 && (myNum == 'a' || myNum == 'b' || myNum == 'c' || myNum == 'd')){
-        colorAllCircleOne(circleOne.Color(10, 0, 0), 5000);
-        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 5000);
-        colorAllCircleThree(circleThree.Color(10, 0, 0), 5000); 
+        colorAllCircleOne(circleOne.Color(10, 0, 0), 1000);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 1000);
+        colorAllCircleThree(circleThree.Color(10, 0, 0), 1000); 
         
     }
 }
