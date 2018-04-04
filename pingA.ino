@@ -40,7 +40,7 @@ void setup() {
 
 void loop() {
     // Trigger pin, Echo pin, delay (ms), visual=true|info=false
-    ping(D2, D3, 200, true);
+    ping(D2, D3, 1000, true);
     
     if (strcmp(state, "reset") == 0){
         colorAllCircleOne(circleOne.Color(0, 0, 0), 5000);
@@ -91,7 +91,7 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
     duration = pulseIn(echo_pin, HIGH);
     inches = duration / 74 / 2;
     cm = duration / 29 / 2;
-    Particle.publish("testing",String(inches));
+    Particle.publish("STATE",String(state));
     if (inches < 12){
         
         if (strcmp(state, "reset") == 0) {
