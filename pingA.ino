@@ -99,7 +99,7 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
                 state = "state1";
                 Particle.publish("transmitter_ECE364_Megaton", "state1");
             } else {
-                state = "reset"
+                state = "reset";
                 Particle.publish("transmitter_ECE364_Megaton", "reset");
             }
         } 
@@ -111,7 +111,7 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
                 state = "state2";
                 Particle.publish("transmitter_ECE364_Megaton", "state2");
             } else {
-                state = "reset"
+                state = "reset";
                 Particle.publish("transmitter_ECE364_Megaton", "reset");
             }
             
@@ -124,7 +124,7 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
                 state = "state3";
                 Particle.publish("transmitter_ECE364_Megaton", "state3");
             } else {
-                state = "reset"
+                state = "reset";
                 Particle.publish("transmitter_ECE364_Megaton", "reset");
             }
             
@@ -137,7 +137,7 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
                 state = "state4";
                 Particle.publish("transmitter_ECE364_Megaton", "state4");
             } else {
-                state = "reset"
+                state = "reset";
                 Particle.publish("transmitter_ECE364_Megaton", "reset");
             }
             
@@ -147,19 +147,9 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
                 state = "state4";
                 Particle.publish("transmitter_ECE364_Megaton", "state4");
             } else {
-                state = "reset"
+                state = "reset";
                 Particle.publish("transmitter_ECE364_Megaton", "reset");
             }
-        }
-        
-        
-        
-        
-        
-        
-        else {
-            Particle.publish("transmitter_ECE364_Megaton", "reset");
-            state = 0;
         }
         
     }
