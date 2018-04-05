@@ -43,29 +43,37 @@ void loop() {
     ping(D2, D3, 1000, true);
     
     if (strcmp(state, "reset") == 0){
-        colorAllCircleOne(circleOne.Color(0, 0, 0), 1000);
-        colorAllCircleTwo(circleTwo.Color(0, 0, 0), 1000);
-        colorAllCircleThree(circleThree.Color(0, 0, 0), 1000); 
+        colorAllCircleOne(circleOne.Color(5, 10, 0), 100);
+        delay(100);
+        colorAllCircleOne(circleOne.Color(0, 0, 0), 100);
+        
+        colorAllCircleTwo(circleTwo.Color(0, 5, 10), 100);
+        delay(100);
+        colorAllCircleTwo(circleTwo.Color(0, 0, 0), 100);
+        
+        colorAllCircleThree(circleThree.Color(10, 20, 5), 100); 
+        delay(100);
+        colorAllCircleThree(circleThree.Color(0, 0, 0), 100); 
         
     } else if (strcmp(state, "state1") == 0 && (myNum == 'a')){
-        colorAllCircleOne(circleOne.Color(10, 0, 0), 1000);
-        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 1000);
-        colorAllCircleThree(circleThree.Color(10, 0, 0), 1000); 
+        colorAllCircleOne(circleOne.Color(10, 0, 0), 100);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 100);
+        colorAllCircleThree(circleThree.Color(10, 0, 0), 100); 
         
     } else if (strcmp(state, "state2") == 0 && (myNum == 'a' || myNum == 'b')){
-        colorAllCircleOne(circleOne.Color(0, 10, 0), 1000);
-        colorAllCircleTwo(circleTwo.Color(0, 10, 0), 1000);
-        colorAllCircleThree(circleThree.Color(0, 10, 0), 1000); 
+        colorAllCircleOne(circleOne.Color(0, 10, 0), 100);
+        colorAllCircleTwo(circleTwo.Color(0, 10, 0), 100);
+        colorAllCircleThree(circleThree.Color(0, 10, 0), 100); 
         
     } else if (strcmp(state, "state3") == 0 && (myNum == 'a' || myNum == 'b' || myNum == 'c')){
-        colorAllCircleOne(circleOne.Color(10, 0, 10), 1000);
-        colorAllCircleTwo(circleTwo.Color(10, 0, 10), 1000);
-        colorAllCircleThree(circleThree.Color(10, 0, 10), 1000); 
+        colorAllCircleOne(circleOne.Color(10, 0, 10), 100);
+        colorAllCircleTwo(circleTwo.Color(10, 0, 10), 100);
+        colorAllCircleThree(circleThree.Color(10, 0, 10), 100); 
         
     } else if (strcmp(state, "state4") == 0 && (myNum == 'a' || myNum == 'b' || myNum == 'c' || myNum == 'd')){
-        colorAllCircleOne(circleOne.Color(10, 0, 0), 1000);
-        colorAllCircleTwo(circleTwo.Color(10, 0, 0), 1000);
-        colorAllCircleThree(circleThree.Color(10, 0, 0), 1000); 
+        colorAllCircleOne(circleOne.Color(10, 10, 10), 100);
+        colorAllCircleTwo(circleTwo.Color(10, 10, 10), 100);
+        colorAllCircleThree(circleThree.Color(10, 10, 10), 100); 
         
     }
 }
@@ -91,7 +99,8 @@ void ping(pin_t trig_pin, pin_t echo_pin, uint32_t wait, bool info)
     duration = pulseIn(echo_pin, HIGH);
     inches = duration / 74 / 2;
     cm = duration / 29 / 2;
-    Particle.publish("STATE",String(state));
+    Particle.publish("testing",String(state));
+    
     if (inches < 12){
         
         if (strcmp(state, "reset") == 0) {
