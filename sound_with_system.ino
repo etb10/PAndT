@@ -1,10 +1,16 @@
-int sound7 = D7;
-int sound6 = D6;
-int sound5 = D5;
-int sound4 = D4;
-int sound3 = D3;
+#include "application.h"
 
-int sound_array[]      = {sound7, sound6, sound5, sound4, sound3};
+SYSTEM_MODE(AUTOMATIC);
+
+/* Output Definitions */
+int reset2  = D7;
+int state1 = D6;
+int state2 = D5;
+int state3 = D4;
+int state4 = D3;
+
+/* Sound Definitions */
+int sound_array[]      = {reset2, state1, state2, state3, state4};
 char* input_commands[] = {"reset", "state1", "state2", "state3", "state4"};
 int sound_length_ms[]  = {1500, 900, 21000, 3000, 3000};               // must update these to the specific lengths of sounds (in ms)
 int sound_array_length = 5;
@@ -17,22 +23,20 @@ int input_commands_length = 5;
 */
 bool prevent_replay = false;
 
-/* Setup */
+/* State Definitions */
+char* state = "reset";
+
 void setup() {
-
-  Particle.subscribe("edwin_test",myHandler);
-  
-  // set up the array of sound outputs
-  for(int i=0; i<sound_array_length; i++) {
-    pinMode(sound_array[i], OUTPUT);
-    digitalWrite(sound_array[i], HIGH); 
-  }
-
-  Serial.begin(9600);
-
+    //Serial.begin(115200);
+    Particle.subscribe("transmitter_ECE364_Megaton", myHandler);
+    // set up the array of sound outputs
+    for(int i=0; i<sound_array_length; i++) {
+      pinMode(sound_array[i], OUTPUT);
+      digitalWrite(sound_array[i], HIGH); 
+    }
+    Serial.begin(9600);
 }
 
-/* Loop */
 void loop() {
   
 }
@@ -40,13 +44,19 @@ void loop() {
 /* Handler for publish events */
 void myHandler(const char *event, const char *data) {
  // if there is data in the request
+ // Particle.publish("testing", "Handler Event. State: " + String(state) + " Data: " + String(data));
  if (data) {
-    // check against all input commands and if found, play a sound
-    for(int i=0; i<input_commands_length; i++) {
-        if(strcmp(input_commands[i], data) == 0) {
-            playSound(sound_array[i], i);
-        } 
-    }
+    // if the state is different than ours, change our state and make noise
+    // if(strncmp(state, data, 6)!=0) {
+      // Particle.publish("testing", "States were different. State: " + state + " Data: " + data);
+      // state = (char*) data;
+      // check against all input commands and if found, play a sound
+      for(int i=0; i<input_commands_length; i++) {
+          if(strcmp(input_commands[i], data) == 0) {
+              playSound(sound_array[i], i);
+          } 
+      }
+    // }
  }
 }
 
