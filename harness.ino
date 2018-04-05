@@ -1,37 +1,4 @@
-// This #include statement was automatically added by the Particle IDE.
 #include <neopixel.h>
-
-// This #include statement was automatically added by the Particle IDE.
-#include <neopixel.h>
-
-/*-------------------------------------------------------------------------
-  Spark Core, Particle Photon, P1, Electron and RedBear Duo library to control
-  WS2811/WS2812/WS2813 based RGB LED devices such as Adafruit NeoPixel strips.
-  Supports:
-  - 800 KHz WS2812, WS2812B, WS2813 and 400kHz bitstream and WS2811
-  - 800 KHz bitstream SK6812RGBW (NeoPixel RGBW pixel strips)
-    (use 'SK6812RGBW' as PIXEL_TYPE)
-  Also supports:
-  - Radio Shack Tri-Color Strip with TM1803 controller 400kHz bitstream.
-  - TM1829 pixels
-  PLEASE NOTE that the NeoPixels require 5V level inputs
-  and the Spark Core, Particle Photon, P1, Electron and RedBear Duo only
-  have 3.3V level outputs. Level shifting is necessary, but will require
-  a fast device such as one of the following:
-  [SN74HCT125N]
-  http://www.digikey.com/product-detail/en/SN74HCT125N/296-8386-5-ND/376860
-  [SN74HCT245N]
-  http://www.digikey.com/product-detail/en/SN74HCT245N/296-1612-5-ND/277258
-  Written by Phil Burgess / Paint Your Dragon for Adafruit Industries.
-  Modified to work with Particle devices by Technobly.
-  Contributions by PJRC and other members of the open source community.
-  Adafruit invests time and resources providing this open source code,
-  please support Adafruit and open-source hardware by purchasing products
-  from Adafruit!
-  --------------------------------------------------------------------*/
-
-/* ======================= includes ================================= */
-
 #include "Particle.h"
 #include "neopixel.h"
 
@@ -52,13 +19,11 @@ SYSTEM_MODE(AUTOMATIC);
 #define GREEN_PIN D2
 #define YELLOW_PIN D2
 #define RED_PIN D2
-#define Bright 200
-
+#define Bright 100
 
 int redPin = D4;
 int yellowPin = D3;
 int greenPin = D2;
-
 
 #define PIXEL_TYPE WS2812
 
