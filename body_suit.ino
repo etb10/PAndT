@@ -77,32 +77,32 @@ void loop() {
         colorMany(choices, 5, RGB);  // all purple
         
     } else if (strcmp(state, "state1") == 0){
-        
+        int turnOff[] = {3,4,5};
+        int black[] = {0,0,0};
+        colorMany(turnOff, 3, black);  // 1 and 2 red
+
         int choices[] = {1,2};
         int RGB[] = {Bright, 0, 0};
         colorMany(choices, 2, RGB);  // 1 and 2 red
         
-        int turnOff[] = {3,4,5};
-        int black[] = {0,0,0};
-        colorMany(turnOff, 3, black);  // 1 and 2 red
-        
     } else if (strcmp(state, "state2") == 0){
-        int choices[] = {2,3};
-        int RGB[] = {Bright/2, Bright/2, 0};
-        colorMany(choices, 2, RGB);  // 2 and 3 orange
-        
         int turnOff[] = {1,4,5};
         int black[] = {0,0,0};
         colorMany(turnOff, 3, black);  // 1 and 2 red
+
+        int choices[] = {2,3};
+        int RGB[] = {Bright/2, Bright/2, 0};
+        colorMany(choices, 2, RGB);  // 2 and 3 orange
+      
         
     } else if (strcmp(state, "state3") == 0){
-        int choices[] = {3,4};
-        int RGB[] = {0, 0, Bright};
-        colorMany(choices, 2, RGB);  // 3 and 4 blue
-        
         int turnOff[] = {1,2,5};
         int black[] = {0,0,0};
         colorMany(turnOff, 3, black);  // 1 and 2 red
+        
+        int choices[] = {3,4};
+        int RGB[] = {0, 0, Bright};
+        colorMany(choices, 2, RGB);  // 3 and 4 blue
         
     } else if (strcmp(state, "state4") == 0){
         int choices[] = {1,2,3,4,5};

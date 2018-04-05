@@ -12,7 +12,7 @@ int state4 = D3;
 /* Sound Definitions */
 int sound_array[]      = {reset2, state1, state2, state3, state4};
 char* input_commands[] = {"reset", "state1", "state2", "state3", "state4"};
-int sound_length_ms[]  = {1500, 900, 21000, 3000, 3000};               // must update these to the specific lengths of sounds (in ms)
+int sound_length_ms[]  = {1000000, 900, 900, 900, 4000};               // must update these to the specific lengths of sounds (in ms)
 int sound_array_length = 5;
 int input_commands_length = 5;
 
@@ -83,7 +83,13 @@ void playSound(int port, int index) {
         if(!prevent_replay && sound_array[i] == port) { // don't reset the signal for the given port
             // don't do anything because the sound was a repeat
         } else {
-            digitalWrite(sound_array[i], HIGH);         
+            // if(sound_array[i] == reset2) {
+            //   digitalWrite(reset2, LOW); 
+            //   delay(125);
+            //   digitalWrite(reset2, HIGH);
+            // } else {
+              digitalWrite(sound_array[i], HIGH);
+            // }
         }
     }
     // write the selected signals up
