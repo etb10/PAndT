@@ -25,6 +25,7 @@ bool prevent_replay = false;
 
 /* State Definitions */
 char* state = "reset";
+int last_played = reset2;
 
 void setup() {
     //Serial.begin(115200);
@@ -70,10 +71,17 @@ function:
     Pull selected port LOW to play for selected amount of time
 */
 void playSound(int port, int index) {
+    // if this sound was just played, don't allow it to do anything
+    if(last_played == port) {
+      return;
+    } else {
+      last_played = port;
+    }
+
     // write all signals down
     for(int i=0; i<sound_array_length; i++) {
         if(!prevent_replay && sound_array[i] == port) { // don't reset the signal for the given port
-            // don't do anything
+            // don't do anything because the sound was a repeat
         } else {
             digitalWrite(sound_array[i], HIGH);         
         }
