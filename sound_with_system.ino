@@ -12,7 +12,7 @@ int state4 = D3;
 /* Sound Definitions */
 int sound_array[]      = {reset2, state1, state2, state3, state4};
 char* input_commands[] = {"reset", "state1", "state2", "state3", "state4"};
-int sound_length_ms[]  = {1000000, 900, 900, 900, 4000};               // must update these to the specific lengths of sounds (in ms)
+int sound_length_ms[]  = {1000000, 900, 900, 900, 3600};               // must update these to the specific lengths of sounds (in ms)
 int sound_array_length = 5;
 int input_commands_length = 5;
 

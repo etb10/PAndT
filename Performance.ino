@@ -8,7 +8,7 @@ void rainbow(uint8_t wait);
 void rainbowCycle(uint8_t wait);
 uint32_t Wheel(byte WheelPos);
 
-SYSTEM_MODE(AUTOMATIC);
+SYSTEM_MODE(MANUAL);
 
 #define PIXEL_COUNT 24
 #define CIRCLE_ONE_PIN D5
